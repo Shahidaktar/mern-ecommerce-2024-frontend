@@ -30,6 +30,7 @@ const Login = () => {
       })
 
       if ("data" in res) {
+        window.location.reload();
         toast.success(res.data.message)
         
       } else {
