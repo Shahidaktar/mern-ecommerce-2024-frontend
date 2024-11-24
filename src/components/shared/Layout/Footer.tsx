@@ -1,28 +1,108 @@
-import { AiFillGithub } from "react-icons/ai";
-
+import {
+  FaFacebookF,
+  FaGithub,
+  FaInstagram,
+  FaLinkedinIn,
+} from "react-icons/fa";
 const Footer = () => {
   return (
-    <footer className="bg-gray-950 sticky top-[100vh] w-full">
-      <div className="px-5 py-2 mx-auto flex items-center sm:flex-row flex-col">
-        <div className="flex flex-shrink-0 items-center">
-          <span className="text-white text-xl">Shop</span>
-          <span className="text-red-700  text-xl">Zolo</span>
+    <footer className="bg-gray-800 text-white py-8">
+      <div className="container mx-auto px-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <div>
+          <h3 className="font-semibold text-lg mb-4">Customer Support</h3>
+          <ul>
+            <li>
+              <a href="#" className="hover:text-yellow-400">
+                Contact Us
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-yellow-400">
+                Returns
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-yellow-400">
+                FAQs
+              </a>
+            </li>
+          </ul>
         </div>
-        <p className="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
-          © 2024 ShopZolo —
-          <a
-            href="https://github.com/Shahidaktar"
-            className="text-gray-600 ml-1"
-            target="_blank"
-          >
-            @shahid
-          </a>
-        </p>
-        <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-          <a className="text-gray-500 hover:text-white " href="https://github.com/Shahidaktar" target="_blank">
-          <AiFillGithub className="h-6 w-6" />
-          </a>
-        </span>
+        <div>
+          <h3 className="font-semibold text-lg mb-4">Policies</h3>
+          <ul>
+            <li>
+              <a href="#" className="hover:text-yellow-400">
+                Privacy Policy
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-yellow-400">
+                Terms & Conditions
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-yellow-400">
+                Shipping Policy
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 className="font-semibold text-lg mb-4">About Us</h3>
+          <ul>
+            <li>
+              <a href="#" className="hover:text-yellow-400">
+                Our Story
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-yellow-400">
+                Careers
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-yellow-400">
+                Blog
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 className="font-semibold text-lg mb-4">Contact Info</h3>
+          <ul className="flex space-x-4">
+            <li>
+              <a
+                href="https://www.instagram.com/mr_shahid_aktar"
+                target="_blank"
+              >
+                <FaInstagram className="h-6 w-6 hover:text-yellow-400" />
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.facebook.com/sahid.akter.526"
+                target="_blank"
+              >
+                <FaFacebookF className="h-6 w-6 hover:text-yellow-400" />
+              </a>
+            </li>
+            <li>
+              {" "}
+              <a href="https://github.com/Shahidaktar" target="_blank">
+                <FaGithub className="h-6 w-6 hover:text-yellow-400" />
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/shahid-aktar-mandal-331872292"
+                target="_blank"
+              >
+                <FaLinkedinIn className="h-6 w-6 hover:text-yellow-400" />
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </footer>
   );

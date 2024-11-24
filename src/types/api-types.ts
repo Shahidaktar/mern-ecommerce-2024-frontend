@@ -1,4 +1,11 @@
-import { CartItemType, Order, Product, ShippingInfo, Stats, User } from "./types";
+import {
+  CartItemType,
+  Order,
+  Product,
+  ShippingInfo,
+  Stats,
+  User,
+} from "./types";
 
 export type CustomError = {
   status: number;
@@ -39,7 +46,6 @@ export type searchProductsResponse = {
   totalPage: number;
 };
 
-
 export type ProductResponse = {
   success: boolean;
   data: Product;
@@ -47,7 +53,7 @@ export type ProductResponse = {
 
 export type StatsResponse = {
   success: boolean;
-  data: Stats
+  data: Stats;
 };
 
 export type AllOrdersResponse = {
@@ -70,40 +76,37 @@ export type searchProductsRequest = {
 
 export type NewProductRequest = {
   id: string;
-  formData:FormData
+  formData: FormData;
 };
 
-
 export type UpdateProductRequest = {
-  userId:string;
-  productId:string;
-  formData:FormData;
+  userId: string;
+  productId: string;
+  formData: FormData;
 };
 
 export type DeleteProductRequest = {
-  userId:string;
-  productId:string;
+  userId: string;
+  productId: string;
 };
-
 
 export type NewOrderRequest = {
   orderItems: CartItemType[];
-  subtotal:number;
-  tax:number;
-  shippingCharges:number;
-  discount:number;
-  total:number;
-  shippingInfo:ShippingInfo;
-  user:string;
+  subtotal: number;
+  tax: number;
+  shippingCharges: number;
+  discount: number;
+  total: number;
+  shippingInfo: ShippingInfo;
+  user: string;
 };
 
-
 export type UpdateOrderRequest = {
-  userId:string;
-  orderId:string;
+  userId: string;
+  orderId: string;
 };
 
 export type DeleteUserRequest = {
-  userId:string;
-  adminUserId:string;
+  userId: string;
+  adminUserId: string;
 };

@@ -1,13 +1,13 @@
-import { Link } from "react-router-dom";
-import AdminLayout from "../../components/shared/Layout/AdminLayout";
-import { useState } from "react";
 import { PlusIcon } from "@heroicons/react/24/outline";
-import { useAllProductsQuery } from "../../redux/api/productAPI";
-import { RootState, server } from "../../redux/store";
-import { CustomError } from "../../types/api-types";
+import { useState } from "react";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
-import { Skeleton } from "../../components/Loader";
+import { Link } from "react-router-dom";
+import { Skeleton1 } from "../../components/Loader";
+import AdminLayout from "../../components/shared/Layout/AdminLayout";
+import { useAllProductsQuery } from "../../redux/api/productAPI";
+import { RootState } from "../../redux/store";
+import { CustomError } from "../../types/api-types";
 
 const Product = () => {
   const { user } = useSelector((state: RootState) => state.userReducer);
@@ -24,7 +24,7 @@ const Product = () => {
   return (
     <AdminLayout>
       {isLoading ? (
-        <Skeleton />
+        <Skeleton1 />
       ) : (
         <div className=" w-full  space-y-3 overflow-x-scroll scrollbar-hide">
           <h1 className=" p-3 w-full overflow-hidden rounded-md text-gray-700 text-2xl lg:aspect-none group-hover:opacity-75 flex justify-center ">
@@ -58,8 +58,8 @@ const Product = () => {
                   <td className="px-4 py-1">
                     <div className="h-16 w-16 flex-shrink-0 overflow-hidden rounded-md ">
                       <img
-                        src={`${server}/${record.photo}`}
-                        className="h-full w-full object-cover object-center"
+                        src={record.photo}
+                        className="object-cover object-center"
                       />
                     </div>
                   </td>

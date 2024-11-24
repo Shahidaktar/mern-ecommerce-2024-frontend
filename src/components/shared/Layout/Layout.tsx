@@ -1,9 +1,8 @@
 import { RootState } from "../../../redux/store";
 import Loader from "../../Loader";
-import Footer from "./Footer";
 
-import Header from "./Header";
 import { useSelector } from "react-redux";
+import Header from "./Header";
 interface props {
   children: JSX.Element | JSX.Element[];
 }
@@ -17,7 +16,6 @@ const Layout = ({ children }: props) => {
     <div className="min-h-screen">
       <Header user={user} />
       <div>{children}</div>
-      <Footer />
     </div>
   );
 };

@@ -1,5 +1,3 @@
-import { PlusIcon } from "@heroicons/react/16/solid";
-import { server } from "../../redux/store";
 import { CartItemType } from "../../types/types";
 
 interface ProductProps {
@@ -20,26 +18,16 @@ const ProductCard = ({
   handler,
 }: ProductProps) => {
   return (
-    <div className="group relative space-y-6 flex flex-col items-center justify-center">
-      <div className="flex items-center justify-center aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md lg:aspect-none group-hover:opacity-75">
-        <img
-          src={`${server}/${photo}`}
-          alt={name}
-          className="pl-[15%] h-[80%] w-[80%] object-cover object-center lg:h-40 lg:w-40 lg:pl-0"
-        />
+    <div className="bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+      <img src={photo} alt={name} className="w-full object-cover" />
+      <div className="mt-4">
+        <p className="text-yellow-400">★★★★☆</p>
+        <h3 className="text-lg font-semibold">{name}</h3>
+        <p className="text-gray-600">₹{price}</p>
       </div>
-      <div className="flex flex-col items-center justify-between">
-        <div>
-          <h3 className="text-sm text-gray-700">
-            <span aria-hidden="true" className="absolute inset-0" />
-            {name}
-          </h3>
-        </div>
-        <p className="text-sm font-medium text-gray-900">₹{price}</p>
-      </div>
-      <div className="absolute top-[22%] left-[44%] opacity-0 group-hover:opacity-100">
+
+      <div className="mt-4 flex justify-between">
         <button
-          className="cursor-pointer hover:rotate-12 transition-all rounded-full bg-red-600"
           onClick={() =>
             handler({
               photo,
@@ -50,8 +38,9 @@ const ProductCard = ({
               quantity: 1,
             })
           }
+          className="cursor-pointer bg-blue-600 text-white py-2 px-4 rounded-full hover:bg-blue-700 transition-colors"
         >
-          <PlusIcon className="h-6 w-6 text-white" aria-hidden="true" />
+          Add to Cart
         </button>
       </div>
     </div>

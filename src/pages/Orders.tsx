@@ -1,11 +1,11 @@
-import Layout from "../components/shared/Layout/Layout";
 import { useState } from "react";
-import { Skeleton } from "../components/Loader";
-import { CustomError } from "../types/api-types";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
+import { Skeleton1 } from "../components/Loader";
+import Layout from "../components/shared/Layout/Layout";
 import { useMyOrdersQuery } from "../redux/api/orderAPI";
 import { RootState } from "../redux/store";
+import { CustomError } from "../types/api-types";
 
 const Orders = () => {
   const { user } = useSelector((state: RootState) => state.userReducer);
@@ -26,7 +26,9 @@ const Orders = () => {
   return (
     <Layout>
       {isLoading ? (
-        <Skeleton />
+        <div className="w-[800px] mx-auto mt-2">
+          <Skeleton1 />
+        </div>
       ) : (
         <div className="lg:w-2/3 w-full mx-auto space-y-3 overflow-x-scroll scrollbar-hide">
           <h1 className=" p-3 w-full overflow-hidden rounded-md text-gray-700 text-2xl lg:aspect-none group-hover:opacity-75 flex justify-center ">

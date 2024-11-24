@@ -9,6 +9,7 @@ import { getUser } from "./redux/api/userAPI";
 import { userExist, userNotExist } from "./redux/reducer/userReducer";
 import { UserReducerInitialState } from "./types/reducer-types";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Footer from "./components/shared/Layout/Footer";
 
 const Home = lazy(() => import("./pages/Home"));
 const Login = lazy(() => import("./pages/Login"));
@@ -50,7 +51,6 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
-          <Route path="/cart" element={<Cart />} />
           <Route
             path="/login"
             element={
@@ -85,8 +85,14 @@ const App = () => {
           {/* login needed*/}
           {/* user ? true : false */}
           <Route
-            element={<ProtectedRoute isAuthenticated={user ? true : false} />}
+            element={
+              <ProtectedRoute
+                isAuthenticated={user ? true : false}
+                redirect="/login"
+              />
+            }
           >
+            <Route path="/cart" element={<Cart />} />
             <Route path="/shipping" element={<Shipping />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/order/:id" element={<OrderDetails />} />
@@ -94,6 +100,7 @@ const App = () => {
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <Footer />
       </Suspense>
       <Toaster position="bottom-center" />
     </Router>

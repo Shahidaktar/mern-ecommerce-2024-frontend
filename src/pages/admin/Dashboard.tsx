@@ -1,14 +1,14 @@
-import AdminLayout from "../../components/shared/Layout/AdminLayout";
 import { BiMaleFemale } from "react-icons/bi";
 import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
-import { useStatsQuery } from "../../redux/api/dashboardAPI";
-import { Skeleton } from "../../components/Loader";
-import { getLastMonths } from "../../utils/features";
 import { Navigate } from "react-router-dom";
-import WidgetCard from "../../components/shared/WidgetCard";
+import { Skeleton1 } from "../../components/Loader";
 import CategoryItem from "../../components/shared/CategoryItem";
 import { BarChart, DoughnutChart } from "../../components/shared/Chart";
+import AdminLayout from "../../components/shared/Layout/AdminLayout";
+import WidgetCard from "../../components/shared/WidgetCard";
+import { useStatsQuery } from "../../redux/api/dashboardAPI";
+import { RootState } from "../../redux/store";
+import { getLastMonths } from "../../utils/features";
 
 const { last6Months: months } = getLastMonths();
 
@@ -21,7 +21,7 @@ const Dashboard = () => {
   return (
     <AdminLayout>
       {isLoading ? (
-        <Skeleton />
+        <Skeleton1 />
       ) : (
         <div className="bg-white">
           <div className="mx-auto max-w-2xl px-4  sm:px-6 sm:py-6 lg:max-w-7xl lg:px-8">
@@ -54,8 +54,8 @@ const Dashboard = () => {
                 percent={stats.changePercent.product}
               />
             </div>
-            <section className=" lg:flex flex-none">
-              <div className=" bg-white rounded-[10px] w-full p-2">
+            <section className=" lg:flex flex-none mt-3">
+              <div className=" bg-white rounded-[10px] w-full p-4 shadow-md">
                 <h2 className="text-center mt-2 mb-3 font-serif font-semibold">
                   Revenue & Transaction
                 </h2>
@@ -70,7 +70,7 @@ const Dashboard = () => {
                 />
               </div>
 
-              <div className=" w-full max-w-[16rem]  flex-col justify-center pb-8 ml-[12%]">
+              <div className=" w-full max-w-[16rem]  flex-col justify-center pb-8 ml-[12%] shadow-md">
                 <h2 className="text-center mt-2 font-serif font-semibold">
                   Inventory
                 </h2>
@@ -91,8 +91,8 @@ const Dashboard = () => {
               </div>
             </section>
 
-            <section className="lg:flex  gap-8 pt-4 px-2 h-full lg:h-[30rem] lg:justify-between">
-              <div className=" bg-white rounded-[10px] w-full max-w-[18rem] p-1 relative ml-[12%] ">
+            <section className="lg:flex  gap-8 pt-4 px-2 h-full lg:justify-between my-3">
+              <div className=" bg-white rounded-[10px] w-full max-w-[18rem] p-1 relative ml-[12%] shadow-md">
                 <h2 className="text-center font-serif font-semibold mb-4">
                   Gender Ratio
                 </h2>
@@ -109,7 +109,6 @@ const Dashboard = () => {
                   <BiMaleFemale />
                 </p>
               </div>
-            
 
               <div className=" w-full  space-y-3 overflow-x-scroll scrollbar-hide ">
                 <h1 className=" p-1 w-full font-serif font-semibold overflow-hidden rounded-md  lg:aspect-none group-hover:opacity-75 flex justify-center  ">

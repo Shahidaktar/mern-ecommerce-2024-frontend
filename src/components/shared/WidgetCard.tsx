@@ -16,7 +16,7 @@ const WidgetCard = ({
   amount = false,
 }: Props) => {
   return (
-    <div className=" flex justify-between lg:w-[16rem]  bg-white p-10 ">
+    <div className=" flex justify-between lg:w-[13rem]  bg-white p-5 border rounded-2xl border-gray-200 shadow-md">
       <div>
         <p className="text-xs text-gray-700">{heading}</p>
         <h2 className="text-xl font-bold text-gray-900">
@@ -58,10 +58,10 @@ const WidgetCard = ({
           style={{
             strokeDashoffset: `calc(380 -  ${
               Math.abs(
-                percent > 0 && percent > 100 //percent > 0 && percent > 1000
+                percent > 0 && percent > 100
                   ? 1000
-                  : percent < -100 //percent < 0 && percent < -1000
-                  ? 1000 //0
+                  : percent < -100
+                  ? 1000
                   : percent
               ) / 2
             }/ 100 *380)`,

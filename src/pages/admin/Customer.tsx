@@ -1,14 +1,14 @@
-import AdminLayout from "../../components/shared/Layout/AdminLayout";
+import { ArchiveBoxIcon } from "@heroicons/react/24/outline";
+import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
+import { Skeleton1 } from "../../components/Loader";
+import AdminLayout from "../../components/shared/Layout/AdminLayout";
 import {
   useAllUsersQuery,
   useDeleteUserMutation,
 } from "../../redux/api/userAPI";
+import { RootState } from "../../redux/store";
 import { CustomError } from "../../types/api-types";
-import toast from "react-hot-toast";
-import { ArchiveBoxIcon } from "@heroicons/react/24/outline";
-import { Skeleton } from "../../components/Loader";
 import { responseToast } from "../../utils/features";
 
 const Customer = () => {
@@ -28,7 +28,7 @@ const Customer = () => {
   return (
     <AdminLayout>
       {isLoading ? (
-        <Skeleton />
+        <Skeleton1 />
       ) : (
         <div className=" w-full  space-y-3 overflow-x-scroll scrollbar-hide">
           <h1 className=" p-3 w-full overflow-hidden rounded-md text-gray-700 text-2xl lg:aspect-none group-hover:opacity-75 flex justify-center ">

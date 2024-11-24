@@ -1,23 +1,25 @@
 import Layout from "../components/shared/Layout/Layout";
 
-import { Fragment, useState } from "react";
 import { Dialog, Menu, Transition } from "@headlessui/react";
-import { XMarkIcon } from "@heroicons/react/24/outline";
 import { FunnelIcon } from "@heroicons/react/20/solid";
+import { XMarkIcon } from "@heroicons/react/24/outline";
+import { Fragment, useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
+import { Skeleton } from "../components/Loader";
 import ProductCard from "../components/shared/ProductCard";
 import {
   useCategoriesQuery,
   useSearchProductsQuery,
 } from "../redux/api/productAPI";
-import { CustomError } from "../types/api-types";
-import toast from "react-hot-toast";
-import { Skeleton } from "../components/Loader";
-import { useDispatch } from "react-redux";
-import { CartItemType } from "../types/types";
 import { addToCart } from "../redux/reducer/cartReducer";
-
+import { CustomError } from "../types/api-types";
+import { CartItemType } from "../types/types";
+import { RootState } from "../redux/store";
 
 const Products = () => {
+  const { user } = useSelector((state: RootState) => state.userReducer);
   const {
     data: categoriesResponse,
     isLoading: loadingCategories,
@@ -25,22 +27,40 @@ const Products = () => {
     error,
   } = useCategoriesQuery("");
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
-  const [search, setSearch] = useState("");
   const [sort, setSort] = useState("");
   const [maxPrice, setMaxPrice] = useState(100000);
   const [category, setCategory] = useState("");
   const [page, setPage] = useState(1);
+
+  const location = useLocation();
+
+  const [searchTerm, setSearchTerm] = useState("");
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const searchQuery = queryParams.get("search");
+    setSearchTerm(searchQuery || "");
+  }, [location.search]);
 
   const {
     data: searchData,
     isLoading: productLoading,
     isError: productIsError,
     error: productError,
-  } = useSearchProductsQuery({ search, sort, category, page, price: maxPrice });
+  } = useSearchProductsQuery({
+    search: searchTerm,
+    sort,
+    category,
+    page,
+    price: maxPrice,
+  });
 
   const dispatch = useDispatch();
 
   const addToCartHandler = (cartItem: CartItemType) => {
+    if (!user) {
+      toast.error("Please Login First");
+      return;
+    }
     if (cartItem.stock < 1) return toast.error("Out of Stock");
     dispatch(addToCart(cartItem));
     toast.success("Added to Cart");
@@ -62,7 +82,6 @@ const Products = () => {
     <Layout>
       <div className="bg-white">
         <div>
-       
           <Transition.Root show={mobileFiltersOpen} as={Fragment}>
             <Dialog
               as="div"
@@ -106,7 +125,6 @@ const Products = () => {
                       </button>
                     </div>
 
-                   
                     <form className="mt-4 border-t border-gray-200">
                       <h3 className="sr-only">Categories</h3>
 
@@ -172,11 +190,7 @@ const Products = () => {
           </Transition.Root>
 
           <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-6">
-              <h1 className="text-4xl font-bold tracking-tight text-gray-900">
-                All Products
-              </h1>
-
+            <div className="flex items-baseline justify-between  border-gray-200 pb-6 pt-2">
               <div className="flex items-center">
                 <Menu as="div" className="relative inline-block text-left">
                   <Transition
@@ -201,14 +215,13 @@ const Products = () => {
               </div>
             </div>
 
-            <section aria-labelledby="products-heading" className="pb-6 pt-6">
+            <section aria-labelledby="products-heading" className="pb-6 pt-3">
               <h2 id="products-heading" className="sr-only">
                 Products
               </h2>
 
               <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5 ">
-                
-                <div className="hidden lg:block lg:w-72">
+                <div className="hidden lg:block lg:w-72 bg-white rounded-lg">
                   <h3 className="sr-only">Categories</h3>
 
                   <div className="space-y-6">
@@ -264,22 +277,14 @@ const Products = () => {
                 </div>
 
                 <div className="lg:col-span-4 lg:ml-10">
-                  <input
-                    type="text"
-                    id="search"
-                    placeholder="Search by name..."
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                    className="border-none focus:ring-transparent text-sm "
-                  />
                   {
-                    
                     <div className="bg-white">
                       <div className="mx-auto max-w-2xl px-4 py-6 sm:px-6 sm:py-6 lg:max-w-7xl lg:px-8">
                         <div className=" grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
                           {productLoading ? (
                             <Skeleton />
-                          ) : (
+                          ) : searchData?.products &&
+                            searchData?.products.length > 0 ? (
                             searchData?.products.map((product) => (
                               <ProductCard
                                 key={product._id}
@@ -291,11 +296,14 @@ const Products = () => {
                                 handler={addToCartHandler}
                               />
                             ))
+                          ) : (
+                            <h1 className="overflow-hidden rounded-md text-gray-700 text-xl md:text-2xl">
+                              No products found
+                            </h1>
                           )}
                         </div>
                       </div>
                     </div>
-                 
                   }
                   {searchData && searchData.totalPage > 1 && (
                     <article className="flex justify-center space-x-3 items-center">
@@ -319,8 +327,6 @@ const Products = () => {
                     </article>
                   )}
                 </div>
-
-               
               </div>
             </section>
           </main>

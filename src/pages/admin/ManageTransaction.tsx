@@ -1,15 +1,15 @@
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
-import AdminLayout from "../../components/shared/Layout/AdminLayout";
-import { RootState, server } from "../../redux/store";
 import { ArchiveBoxIcon } from "@heroicons/react/24/outline";
-import { Order, OrderItem } from "../../types/types";
 import { useSelector } from "react-redux";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import { Skeleton1 } from "../../components/Loader";
+import AdminLayout from "../../components/shared/Layout/AdminLayout";
 import {
   useDeleteOrderMutation,
   useOrderDetailsQuery,
   useUpdateOrderMutation,
 } from "../../redux/api/orderAPI";
-import { Skeleton } from "../../components/Loader";
+import { RootState, server } from "../../redux/store";
+import { Order, OrderItem } from "../../types/types";
 import { responseToast } from "../../utils/features";
 
 const defaultData: Order = {
@@ -79,7 +79,7 @@ const ManageTransaction = () => {
   return (
     <AdminLayout>
       {isLoading ? (
-        <Skeleton />
+        <Skeleton1 />
       ) : (
         <>
           <button className="cursor-pointer" onClick={deleteHandler}>
