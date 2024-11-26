@@ -117,16 +117,16 @@ const Dashboard = () => {
                 <table className="table-auto w-full text-left whitespace-no-wrap">
                   <thead>
                     <tr>
-                      <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 ">
+                      <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm  ">
                         ID
                       </th>
-                      <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
+                      <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm ">
                         Qty
                       </th>
-                      <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
+                      <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm ">
                         Discount
                       </th>
-                      <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 ">
+                      <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm  ">
                         Amount
                       </th>
                     </tr>

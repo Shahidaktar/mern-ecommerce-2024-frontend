@@ -37,20 +37,20 @@ const Customer = () => {
           <table className="table-auto w-full text-left whitespace-no-wrap">
             <thead>
               <tr>
-                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 ">
+                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm  ">
                   Name
                 </th>
-                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
+                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm ">
                   Email
                 </th>
-                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 ">
+                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm  ">
                   Gender
                 </th>
-                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
+                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm ">
                   Role
                 </th>
 
-                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
+                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm ">
                   Action
                 </th>
               </tr>

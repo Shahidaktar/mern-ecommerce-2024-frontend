@@ -43,6 +43,7 @@ const Header = ({ user }: PropsType) => {
         <div className="relative md:w-1/3 flex justify-center ">
           <input
             type="text"
+            name="search"
             className="w-[200px] md:w-full py-2 px-4 pl-10 rounded-full border-none"
             placeholder="Search for products, brands and more..."
             value={searchTerm}
@@ -57,9 +58,9 @@ const Header = ({ user }: PropsType) => {
             onClick={handleSearch}
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               d="M21 21l-4.35-4.35M10 18a8 8 0 110-16 8 8 0 010 16z"
             ></path>
           </svg>

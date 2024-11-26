@@ -4,6 +4,7 @@ import {
   FaInstagram,
   FaLinkedinIn,
 } from "react-icons/fa";
+import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="bg-gray-800 text-white py-8">
@@ -12,19 +13,19 @@ const Footer = () => {
           <h3 className="font-semibold text-lg mb-4">Customer Support</h3>
           <ul>
             <li>
-              <a href="#" className="hover:text-yellow-400">
+              <Link to="/" className="hover:text-yellow-400">
                 Contact Us
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:text-yellow-400">
+              <Link to="/" className="hover:text-yellow-400">
                 Returns
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:text-yellow-400">
+              <Link to="/" className="hover:text-yellow-400">
                 FAQs
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -32,19 +33,19 @@ const Footer = () => {
           <h3 className="font-semibold text-lg mb-4">Policies</h3>
           <ul>
             <li>
-              <a href="#" className="hover:text-yellow-400">
+              <Link to="/" className="hover:text-yellow-400">
                 Privacy Policy
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:text-yellow-400">
+              <Link to="/" className="hover:text-yellow-400">
                 Terms & Conditions
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:text-yellow-400">
+              <Link to="/" className="hover:text-yellow-400">
                 Shipping Policy
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -52,19 +53,19 @@ const Footer = () => {
           <h3 className="font-semibold text-lg mb-4">About Us</h3>
           <ul>
             <li>
-              <a href="#" className="hover:text-yellow-400">
+              <Link to="/" className="hover:text-yellow-400">
                 Our Story
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:text-yellow-400">
+              <Link to="/" className="hover:text-yellow-400">
                 Careers
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:text-yellow-400">
+              <Link to="/" className="hover:text-yellow-400">
                 Blog
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
